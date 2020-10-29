@@ -35,6 +35,7 @@ import com.mapbox.mapboxsdk.maps.UiSettings;
 import com.mapbox.navigation.base.TimeFormat;
 import com.mapbox.navigation.base.formatter.DistanceFormatter;
 import com.mapbox.navigation.base.route.Router;
+import com.mapbox.navigation.base.trip.model.alert.RouteAlert;
 import com.mapbox.navigation.core.MapboxNavigation;
 import com.mapbox.navigation.core.replay.MapboxReplayer;
 import com.mapbox.navigation.ui.camera.DynamicCamera;
@@ -47,8 +48,10 @@ import com.mapbox.navigation.ui.internal.utils.ViewUtils;
 import com.mapbox.navigation.ui.map.NavigationMapboxMap;
 import com.mapbox.navigation.ui.map.WayNameView;
 import com.mapbox.navigation.ui.puck.DefaultMapboxPuckDrawableSupplier;
+import com.mapbox.navigation.ui.routealert.MapboxRouteAlert;
 import com.mapbox.navigation.ui.summary.SummaryBottomSheet;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -79,6 +82,7 @@ public class NavigationView extends CoordinatorLayout implements LifecycleOwner,
   private static final int DEFAULT_PX_BETWEEN_BOTTOM_SHEET_LOGO_AND_ATTRIBUTION = 16;
   private static final long WAY_NAME_TRANSLATIONX_DURATION = 750L;
   private MapView mapView;
+  private MapboxRouteAlert mapboxRouteAlert = null;
   private InstructionView instructionView;
   private SummaryBottomSheet summaryBottomSheet;
   private BottomSheetBehavior summaryBehavior;
@@ -240,6 +244,7 @@ public class NavigationView extends CoordinatorLayout implements LifecycleOwner,
       @Override
       public void onStyleLoaded(@NonNull Style style) {
         initializeNavigationMap(mapView, mapboxMap);
+        mapboxRouteAlert = new MapboxRouteAlert(getContext(), style);
         moveMapboxLogoAboveBottomSheet();
         moveMapboxAttributionAboveBottomSheet();
         logoAndAttributionShownForFirstTime = true;
@@ -310,6 +315,13 @@ public class NavigationView extends CoordinatorLayout implements LifecycleOwner,
   public void addMarker(Point position) {
     if (navigationMap != null) {
       navigationMap.addDestinationMarker(position);
+    }
+  }
+
+  @Override
+  public void onRouteAlertsUpdated(List<RouteAlert> routeAlerts) {
+    if (mapboxRouteAlert != null) {
+      mapboxRouteAlert.onNewRouteAlerts(routeAlerts);
     }
   }
 

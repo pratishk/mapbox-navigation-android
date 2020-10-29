@@ -21,7 +21,11 @@ import com.mapbox.navigation.base.trip.model.alert.RouteAlertType
  *  options = [RouteAlertOption.ROUTE_ALERT_REST_STOP] or [RouteAlertOption.ROUTE_ALERT_TUNNEL]
  *  to support both rest stop and tunnel.
  */
-class MapboxRouteAlert(context: Context, style: Style, private val options: Int = Int.MAX_VALUE) {
+class MapboxRouteAlert @JvmOverloads constructor(
+    context: Context,
+    style: Style,
+    private val options: Int = Int.MAX_VALUE
+) {
 
     private val routeAlertToll = RouteAlertToll(
         RouteAlertViewOptions.Builder(context, style).build()

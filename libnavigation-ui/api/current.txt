@@ -59,6 +59,7 @@ package com.mapbox.navigation.ui {
     method public void onPause();
     method public void onRestoreInstanceState(android.os.Bundle);
     method public void onResume();
+    method public void onRouteAlertsUpdated(java.util.List<com.mapbox.navigation.base.trip.model.alert.RouteAlert!>!);
     method public void onSaveInstanceState(android.os.Bundle);
     method public void onStart();
     method public void onStop();
@@ -640,6 +641,7 @@ package com.mapbox.navigation.ui.routealert {
 
   public final class MapboxRouteAlert {
     ctor public MapboxRouteAlert(android.content.Context context, com.mapbox.mapboxsdk.maps.Style style, int options);
+    ctor public MapboxRouteAlert(android.content.Context context, com.mapbox.mapboxsdk.maps.Style style);
     method public void onNewRouteAlerts(java.util.List<? extends com.mapbox.navigation.base.trip.model.alert.RouteAlert> routeAlerts);
     field public static final com.mapbox.navigation.ui.routealert.MapboxRouteAlert.Companion! Companion;
   }
