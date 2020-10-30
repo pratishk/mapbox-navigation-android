@@ -1767,6 +1767,30 @@ class MapRouteLineTest {
     }
 
     @Test
+    fun getRouteLineExpressionDataWithStreetClassOverrideWhenHasStreetClassesOnMotorway() {
+        val congestionColorProvider: (String, Boolean) -> Int = { trafficCongestion, _ ->
+            when (trafficCongestion) {
+                UNKNOWN_CONGESTION_VALUE -> -9
+                LOW_CONGESTION_VALUE -> -1
+                else -> 33
+            }
+        }
+        val routeAsJsonJson = loadJsonFixture("motorway-route-with-road-classes.json")
+        val route = DirectionsRoute.fromJson(routeAsJsonJson)
+
+        val trafficExpressionData = getRouteLineTrafficExpressionData(route)
+        val result = getRouteLineExpressionDataWithStreetClassOverride(
+            trafficExpressionData,
+            route.distance(),
+            congestionColorProvider,
+            true,
+            listOf("motorway")
+        )
+
+        assertTrue(result.all { it.segmentColorExpression == Expression.color(-1) })
+    }
+
+    @Test
     fun getRouteLineExpressionDataWithStreetClassOverrideWhenDoesNotHaveStreetClasses() {
         val congestionColorProvider: (String, Boolean) -> Int = { trafficCongestion, _ ->
             when (trafficCongestion) {
