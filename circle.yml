@@ -39,7 +39,11 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
-
+      - mobile-metrics-dry-run:
+          type: approval
+      - mobile-metrics-benchmarks:
+          requires:
+            - mobile-metrics-dry-run
 commands:
   restore-gradle-cache:
     steps:
@@ -283,31 +287,13 @@ commands:
     steps:
       - run:
           name: Track performance of the Navigation SDK
-          command: |
-            if [ -n "${MOBILE_METRICS_TOKEN}" ]; then
-              if [[ $CIRCLE_BRANCH == master ]]; then
-               curl -u ${MOBILE_METRICS_TOKEN}: \
-                 -d build_parameters[CIRCLE_JOB]=android-navigation-benchmark \
-                 -d build_parameters[BENCHMARK_COMMIT]= ${CIRCLE_SHA1} \
-                 https://circleci.com/api/v1.1/project/github/mapbox/mobile-metrics/tree/master
-              fi
-            fi
+          command: bash scripts/track-performance.sh benchmark
       - run:
           name: Trigger android binary size check
-          command: |
-            if [ -n "${MOBILE_METRICS_TOKEN}" ]; then
-              if [[ $CIRCLE_BRANCH == master ]]; then
-                curl -u ${MOBILE_METRICS_TOKEN}: -d build_parameters[CIRCLE_JOB]=android-navigation-binary-size https://circleci.com/api/v1.1/project/github/mapbox/mobile-metrics/tree/master
-              fi
-            fi
+          command: bash scripts/track-performance.sh binarysize
       - run:
           name: Trigger code coverage check
-          command: |
-            if [ -n "${MOBILE_METRICS_TOKEN}" ]; then
-              if [[ $CIRCLE_BRANCH == master ]]; then
-                curl -u ${MOBILE_METRICS_TOKEN}: -d build_parameters[CIRCLE_JOB]=android-navigation-code-coverage https://circleci.com/api/v1.1/project/github/mapbox/mobile-metrics/tree/master
-              fi
-            fi
+          command: bash scripts/track-performance.sh testcoverage
 
 jobs:
   assemble-debug:
@@ -391,6 +377,14 @@ jobs:
           module_target: "libnavigation-core"
           module_wrapper: "app-tests-wrapper"
           variant: "debug"
+
+  mobile-metrics-benchmarks:
+    working_directory: ~/code
+    docker:
+      - image: << pipeline.parameters.docker-image-tag >>
+    steps:
+      - checkout
+      - track-performance
 
   release-snapshot:
     working_directory: ~/code
