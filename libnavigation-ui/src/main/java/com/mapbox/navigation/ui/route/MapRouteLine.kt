@@ -1515,6 +1515,7 @@ internal class MapRouteLine(
                     route.legs()?.mapNotNull {
                         it.annotation()?.congestion()
                     }?.flatten()?.forEachIndexed { index, congestion ->
+                        runningDistance += distanceList[index]
                         if (index == 0) {
                             routeLineTrafficData.add(
                                 RouteLineTrafficExpressionData(
@@ -1524,21 +1525,20 @@ internal class MapRouteLine(
                                 )
                             )
                         } else {
-                            runningDistance += distanceList[index - 1]
-                            if (routeLineTrafficData.last().trafficCongestionIdentifier ==
-                                congestion &&
-                                routeLineTrafficData.last().roadClass == roadClassMap[index]
-                            ) {
-                                // continue
-                            } else {
-                                routeLineTrafficData.add(
-                                    RouteLineTrafficExpressionData(
-                                        runningDistance,
-                                        congestion,
-                                        roadClassMap[index]
+                                if (routeLineTrafficData.last().trafficCongestionIdentifier ==
+                                    congestion &&
+                                    routeLineTrafficData.last().roadClass == roadClassMap[index]
+                                ) {
+                                    // continue
+                                } else {
+                                    routeLineTrafficData.add(
+                                        RouteLineTrafficExpressionData(
+                                            runningDistance,
+                                            congestion,
+                                            roadClassMap[index]
+                                        )
                                     )
-                                )
-                            }
+                                }
                         }
                     }
                     return routeLineTrafficData
