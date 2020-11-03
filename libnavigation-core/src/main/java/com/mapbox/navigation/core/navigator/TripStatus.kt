@@ -1,4 +1,4 @@
-package com.mapbox.navigation.navigator.internal
+package com.mapbox.navigation.core.navigator
 
 import android.location.Location
 import com.mapbox.navigation.base.trip.model.RouteProgress

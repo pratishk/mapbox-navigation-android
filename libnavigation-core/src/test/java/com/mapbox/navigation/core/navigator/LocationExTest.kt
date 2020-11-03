@@ -1,4 +1,4 @@
-package com.mapbox.navigation.navigator
+package com.mapbox.navigation.core.navigator
 
 import android.location.Location
 import com.mapbox.geojson.Point
@@ -16,17 +16,28 @@ class LocationExTest {
     @Test
     fun toFixLocation() {
         val location = Location(PROVIDER).apply {
-            latitude = LATITUDE
-            longitude = LONGITUDE
-            time = TIME
-            elapsedRealtimeNanos = ELAPSED_REAL_TIME
-            speed = SPEED
-            bearing = BEARING
-            altitude = ALTITUDE
-            accuracy = ACCURACY
-            bearingAccuracyDegrees = BEARING_ACCURACY
-            speedAccuracyMetersPerSecond = SPEED_ACCURACY
-            verticalAccuracyMeters = VERTICAL_ACCURACY
+            latitude =
+                LATITUDE
+            longitude =
+                LONGITUDE
+            time =
+                TIME
+            elapsedRealtimeNanos =
+                ELAPSED_REAL_TIME
+            speed =
+                SPEED
+            bearing =
+                BEARING
+            altitude =
+                ALTITUDE
+            accuracy =
+                ACCURACY
+            bearingAccuracyDegrees =
+                BEARING_ACCURACY
+            speedAccuracyMetersPerSecond =
+                SPEED_ACCURACY
+            verticalAccuracyMeters =
+                VERTICAL_ACCURACY
         }
 
         location.toFixLocation().run {
@@ -48,7 +59,10 @@ class LocationExTest {
     @Test
     fun toLocation() {
         val fixLocation = FixLocation(
-            Point.fromLngLat(LONGITUDE, LATITUDE),
+            Point.fromLngLat(
+                LONGITUDE,
+                LATITUDE
+            ),
             ELAPSED_REAL_TIME,
             DATE,
             SPEED,
@@ -80,7 +94,10 @@ class LocationExTest {
     @Test
     fun checkLocationWithZeroParams() {
         val fixLocation = FixLocation(
-            Point.fromLngLat(LONGITUDE, LATITUDE),
+            Point.fromLngLat(
+                LONGITUDE,
+                LATITUDE
+            ),
             ELAPSED_REAL_TIME,
             DATE,
             NULL_VALUE,

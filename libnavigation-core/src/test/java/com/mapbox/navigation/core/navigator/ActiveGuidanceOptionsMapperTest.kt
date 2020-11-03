@@ -1,4 +1,4 @@
-package com.mapbox.navigation.navigator
+package com.mapbox.navigation.core.navigator
 
 import com.mapbox.api.directions.v5.DirectionsCriteria
 import com.mapbox.api.directions.v5.models.DirectionsRoute
@@ -20,7 +20,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingPolyline = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -39,7 +39,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -58,7 +58,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingGeoJson = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingGeoJson = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -77,7 +77,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -94,7 +94,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -109,7 +109,7 @@ class ActiveGuidanceOptionsMapperTest {
     fun checksNullDirectionsRoute() {
         val directionsRoute = null
 
-        val drivingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -128,7 +128,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingPolyline = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -147,7 +147,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -166,7 +166,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingGeoJson = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingGeoJson = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -185,7 +185,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -204,7 +204,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingPolyline = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -223,7 +223,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -242,7 +242,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingGeoJson = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingGeoJson = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -261,7 +261,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val drivingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val drivingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -280,7 +280,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val walkingPolyline = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val walkingPolyline = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -299,7 +299,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val walkingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val walkingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -318,7 +318,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val walkingGeoJson = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val walkingGeoJson = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -337,7 +337,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val walkingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val walkingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -356,7 +356,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val cyclingPolyline = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val cyclingPolyline = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -375,7 +375,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val cyclingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val cyclingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -394,7 +394,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val cyclingGeoJson = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val cyclingGeoJson = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(
@@ -413,7 +413,7 @@ class ActiveGuidanceOptionsMapperTest {
         val directionsRoute: DirectionsRoute = mockk()
         every { directionsRoute.routeOptions() } returns routeOptions
 
-        val cyclingPolyline6 = ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
+        val cyclingPolyline6 = com.mapbox.navigation.core.navigator.ActiveGuidanceOptionsMapper.mapFrom(directionsRoute)
 
         assertEquals(
             ActiveGuidanceOptions(

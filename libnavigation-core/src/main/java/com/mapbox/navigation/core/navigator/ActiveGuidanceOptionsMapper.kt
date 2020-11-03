@@ -1,4 +1,4 @@
-package com.mapbox.navigation.navigator
+package com.mapbox.navigation.core.navigator
 
 import com.mapbox.api.directions.v5.DirectionsCriteria
 import com.mapbox.api.directions.v5.models.DirectionsRoute
@@ -11,8 +11,14 @@ internal object ActiveGuidanceOptionsMapper {
     private const val GEOJSON = "geojson"
 
     fun mapFrom(directionsRoute: DirectionsRoute?): ActiveGuidanceOptions {
-        val mode = mapToActiveGuidanceMode(directionsRoute?.routeOptions()?.profile())
-        val geometry = mapToActiveGuidanceGeometry(directionsRoute?.routeOptions()?.geometries())
+        val mode =
+            mapToActiveGuidanceMode(
+                directionsRoute?.routeOptions()?.profile()
+            )
+        val geometry =
+            mapToActiveGuidanceGeometry(
+                directionsRoute?.routeOptions()?.geometries()
+            )
         return ActiveGuidanceOptions(mode, geometry)
     }
 
